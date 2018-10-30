@@ -75,11 +75,10 @@ func (c *DisabledUsersCommand) Run(args []string) int {
 
 	for _, u := range lusers {
 		for _, v := range susers {
-			if v.Name == "slackbot" {
+			if v.IsBot == true {
 				continue
 			}
 			if strings.EqualFold(u.Email, v.Profile.Email) {
-				// if u.Email == v.Profile.Email {
 				fmt.Printf("warning: found a live slacker that should be dead: %s,%s,%s\n", v.Name, v.Profile.Email, v.ID)
 
 				if c.Purge {
