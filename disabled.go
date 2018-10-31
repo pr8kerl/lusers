@@ -78,6 +78,9 @@ func (c *DisabledUsersCommand) Run(args []string) int {
 
 	for _, u := range lusers {
 		for _, v := range susers {
+			if v.Name == "slackbot" {
+				continue
+			}
 			if v.IsBot == true {
 				continue
 			}
